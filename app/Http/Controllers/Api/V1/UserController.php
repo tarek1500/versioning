@@ -10,15 +10,17 @@ use App\Http\Services\V1\User\UserServiceInterface;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 
 class UserController extends Controller
 {
     /**
      * Constructor.
-     *
-     * @param \App\Http\Services\V1\User\UserServiceInterface $user Service instance.
      */
-    public function __construct(private UserServiceInterface $user) {}
+    public function __construct()
+    {
+        $this->user = App::make(UserServiceInterface::class);
+    }
 
     /**
      * Display a listing of the resource.

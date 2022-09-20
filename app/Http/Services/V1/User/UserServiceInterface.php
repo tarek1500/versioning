@@ -8,10 +8,8 @@ interface UserServiceInterface
 {
     /**
      * Constructor.
-     *
-     * @param \App\Http\Repositories\V1\User\UserRepositoryInterface $user Repository instance.
      */
-    public function __construct(UserRepositoryInterface $user);
+    public function __construct();
 
     /**
      * Get all resources from storage.

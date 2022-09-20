@@ -5,16 +5,18 @@ namespace App\Http\Services\V1\User;
 use App\Http\Repositories\V1\User\UserRepositoryInterface;
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 
 class UserService implements UserServiceInterface
 {
     /**
      * Constructor.
-     *
-     * @param \App\Http\Repositories\V1\User\UserRepositoryInterface $user Repository instance.
      */
-    public function __construct(private UserRepositoryInterface $user) {}
+    public function __construct()
+    {
+        $this->user = App::make(UserRepositoryInterface::class);
+    }
 
     /**
      * Get all resources from storage.
