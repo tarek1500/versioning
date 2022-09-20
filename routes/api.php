@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\V1\UserController as UserControllerV1;
+use App\Http\Controllers\Api\V2\UserController as UserControllerV2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('v1')->group(function () {
+    Route::apiResource('users', UserControllerV1::class);
+});
+
+Route::prefix('v2')->group(function () {
+    Route::apiResource('users', UserControllerV2::class);
 });
